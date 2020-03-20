@@ -23,10 +23,10 @@ CREATE TABLE `nideshop_ad` (
 `id`  smallint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `ad_position_id`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 `media_type`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`link`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`image_url`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`content`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`link`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`image_url`  text CHARACTER SET utf8mb4  NOT NULL ,
+`content`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `end_time`  int NOT NULL DEFAULT 0 ,
 `enabled`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
 PRIMARY KEY (`id`),
@@ -52,10 +52,10 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_ad_position`;
 CREATE TABLE `nideshop_ad_position` (
 `id`  tinyint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `width`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 `height`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
-`desc`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`desc`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -77,14 +77,14 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_address`;
 CREATE TABLE `nideshop_address` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(50) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `user_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `country_id`  smallint NOT NULL DEFAULT 0 ,
 `province_id`  smallint NOT NULL DEFAULT 0 ,
 `city_id`  smallint NOT NULL DEFAULT 0 ,
 `district_id`  smallint NOT NULL DEFAULT 0 ,
-`address`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`mobile`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`address`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`mobile`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `is_default`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`),
 INDEX `user_id` (`user_id`) USING BTREE 
@@ -108,14 +108,14 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_admin`;
 CREATE TABLE `nideshop_admin` (
 `id`  int NOT NULL AUTO_INCREMENT ,
-`username`  varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
-`password`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
-`password_salt`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
-`last_login_ip`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
+`username`  varchar(10) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
+`password`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
+`password_salt`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
+`last_login_ip`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
 `last_login_time`  int NOT NULL DEFAULT 0 ,
 `add_time`  int NOT NULL DEFAULT 0 ,
 `update_time`  int NOT NULL DEFAULT 0 ,
-`avatar`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
+`avatar`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
 `admin_role_id`  int NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`)
 )
@@ -139,9 +139,9 @@ DROP TABLE IF EXISTS `nideshop_attribute`;
 CREATE TABLE `nideshop_attribute` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
 `attribute_category_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `input_type`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
-`values`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`values`  text CHARACTER SET utf8mb4  NOT NULL ,
 `sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`),
 INDEX `cat_id` (`attribute_category_id`) USING BTREE 
@@ -166,7 +166,7 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_attribute_category`;
 CREATE TABLE `nideshop_attribute_category` (
 `id`  int UNSIGNED NOT NULL ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `enabled`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
 PRIMARY KEY (`id`)
 )
@@ -188,16 +188,16 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_brand`;
 CREATE TABLE `nideshop_brand` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`list_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`simple_desc`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`list_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`simple_desc`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 50 ,
 `is_show`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
 `floor_price`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
-`app_list_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`app_list_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `is_new`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`new_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`new_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `new_sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 10 ,
 PRIMARY KEY (`id`),
 INDEX `is_show` (`is_show`) USING BTREE 
@@ -224,16 +224,16 @@ CREATE TABLE `nideshop_cart` (
 `user_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `session_id`  char(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' ,
 `goods_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_sn`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_sn`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `product_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `market_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 ,
 `retail_price`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
 `number`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_specifition_name_value`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '瑙勬牸灞炴€х粍鎴愮殑瀛楃涓诧紝鐢ㄦ潵鏄剧ず鐢?' ,
-`goods_specifition_ids`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT 'product琛ㄥ搴旂殑goods_specifition_ids' ,
+`goods_specifition_name_value`  text CHARACTER SET utf8mb4  NOT NULL COMMENT '瑙勬牸灞炴€х粍鎴愮殑瀛楃涓诧紝鐢ㄦ潵鏄剧ず鐢?' ,
+`goods_specifition_ids`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT 'product琛ㄥ搴旂殑goods_specifition_ids' ,
 `checked`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
-`list_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`list_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`),
 INDEX `session_id` (`session_id`) USING BTREE 
 )
@@ -256,20 +256,20 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_category`;
 CREATE TABLE `nideshop_category` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`keywords`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`front_desc`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(90) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`keywords`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`front_desc`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `parent_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 50 ,
 `show_index`  tinyint(1) NOT NULL DEFAULT 0 ,
 `is_show`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
-`banner_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`icon_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`img_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`wap_banner_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`level`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`banner_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`icon_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
+`img_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
+`wap_banner_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
+`level`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
 `type`  int NOT NULL DEFAULT 0 ,
-`front_name`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`front_name`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
 PRIMARY KEY (`id`),
 INDEX `parent_id` (`parent_id`) USING BTREE 
 )
@@ -292,9 +292,9 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_channel`;
 CREATE TABLE `nideshop_channel` (
 `id`  int NOT NULL AUTO_INCREMENT ,
-`name`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`icon_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(45) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`icon_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `sort_order`  int UNSIGNED NOT NULL DEFAULT 10 ,
 PRIMARY KEY (`id`)
 )
@@ -386,7 +386,7 @@ DROP TABLE IF EXISTS `nideshop_comment_picture`;
 CREATE TABLE `nideshop_comment_picture` (
 `id`  int NOT NULL AUTO_INCREMENT ,
 `comment_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 5 ,
 PRIMARY KEY (`id`)
 )
@@ -420,7 +420,7 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_coupon`;
 CREATE TABLE `nideshop_coupon` (
 `id`  smallint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `type_money`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
 `send_type`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `min_amount`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 ,
@@ -453,14 +453,14 @@ CREATE TABLE `nideshop_feedback` (
 `msg_id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `parent_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `user_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`user_name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`user_email`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`msg_title`  varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`user_name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`user_email`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`msg_title`  varchar(200) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `msg_type`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `msg_status`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`msg_content`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`msg_content`  text CHARACTER SET utf8mb4  NOT NULL ,
 `msg_time`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`message_img`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' ,
+`message_img`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '0' ,
 `order_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `msg_area`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`msg_id`),
@@ -510,13 +510,13 @@ DROP TABLE IF EXISTS `nideshop_goods`;
 CREATE TABLE `nideshop_goods` (
 `id`  int UNSIGNED NOT NULL ,
 `category_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_sn`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_sn`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `brand_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `goods_number`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`keywords`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`goods_brief`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`goods_desc`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL ,
+`keywords`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`goods_brief`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`goods_desc`  text CHARACTER SET utf8mb4  NULL ,
 `is_on_sale`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
 `add_time`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `sort_order`  smallint UNSIGNED NOT NULL DEFAULT 100 ,
@@ -525,15 +525,15 @@ CREATE TABLE `nideshop_goods` (
 `counter_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '涓撴煖浠锋牸' ,
 `extra_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '闄勫姞浠锋牸' ,
 `is_new`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_unit`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '鍟嗗搧鍗曚綅' ,
-`primary_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '鍟嗗搧涓诲浘' ,
-`list_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '鍟嗗搧鍒楄〃鍥?' ,
+`goods_unit`  varchar(45) CHARACTER SET utf8mb4  NOT NULL COMMENT '鍟嗗搧鍗曚綅' ,
+`primary_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL COMMENT '鍟嗗搧涓诲浘' ,
+`list_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL COMMENT '鍟嗗搧鍒楄〃鍥?' ,
 `retail_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '闆跺敭浠锋牸' ,
 `sell_volume`  int UNSIGNED NOT NULL DEFAULT 0 COMMENT '閿€鍞噺' ,
 `primary_product_id`  int UNSIGNED NOT NULL DEFAULT 0 COMMENT '涓籹ku銆€product_id' ,
 `unit_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 COMMENT '鍗曚綅浠锋牸锛屽崟浠?' ,
-`promotion_desc`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`promotion_tag`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`promotion_desc`  varchar(255) CHARACTER SET utf8mb4  NOT NULL ,
+`promotion_tag`  varchar(45) CHARACTER SET utf8mb4  NOT NULL ,
 `app_exclusive_price`  decimal(10,2) UNSIGNED NOT NULL COMMENT 'APP涓撲韩浠?' ,
 `is_app_exclusive`  tinyint UNSIGNED NOT NULL COMMENT '鏄惁鏄疉PP涓撳睘' ,
 `is_limited`  tinyint UNSIGNED NOT NULL ,
@@ -567,7 +567,7 @@ CREATE TABLE `nideshop_goods_attribute` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
 `goods_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `attribute_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`value`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`value`  text CHARACTER SET utf8mb4  NOT NULL ,
 PRIMARY KEY (`id`),
 INDEX `goods_id` (`goods_id`) USING BTREE ,
 INDEX `attr_id` (`attribute_id`) USING BTREE 
@@ -600,8 +600,8 @@ DROP TABLE IF EXISTS `nideshop_goods_gallery`;
 CREATE TABLE `nideshop_goods_gallery` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
 `goods_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`img_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`img_desc`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`img_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`img_desc`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `sort_order`  int UNSIGNED NOT NULL DEFAULT 5 ,
 PRIMARY KEY (`id`),
 INDEX `goods_id` (`goods_id`) USING BTREE 
@@ -631,9 +631,9 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_goods_issue`;
 CREATE TABLE `nideshop_goods_issue` (
 `id`  int NOT NULL AUTO_INCREMENT ,
-`goods_id`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL ,
-`question`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL ,
-`answer`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL ,
+`goods_id`  text CHARACTER SET utf8mb4  NULL ,
+`question`  varchar(255) CHARACTER SET utf8mb4  NULL DEFAULT NULL ,
+`answer`  varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -657,8 +657,8 @@ CREATE TABLE `nideshop_goods_specification` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
 `goods_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `specification_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`value`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`value`  varchar(50) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`),
 INDEX `goods_id` (`goods_id`) USING BTREE ,
 INDEX `specification_id` (`specification_id`) USING BTREE 
@@ -682,12 +682,12 @@ COMMIT;
 -- ----------------------------
 DROP TABLE IF EXISTS `nideshop_keywords`;
 CREATE TABLE `nideshop_keywords` (
-`keyword`  varchar(90) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`keyword`  varchar(90) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `is_hot`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `is_default`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `is_show`  tinyint UNSIGNED NOT NULL DEFAULT 1 ,
 `sort_order`  int UNSIGNED NOT NULL DEFAULT 100 ,
-`scheme _url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '鍏抽敭璇嶇殑璺宠浆閾炬帴' ,
+`scheme _url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '鍏抽敭璇嶇殑璺宠浆閾炬帴' ,
 `id`  int NOT NULL AUTO_INCREMENT ,
 `type`  int UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`)
@@ -712,21 +712,21 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_order`;
 CREATE TABLE `nideshop_order` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`order_sn`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`order_sn`  varchar(20) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `user_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `order_status`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `shipping_status`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `pay_status`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`consignee`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`consignee`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `country`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 `province`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 `city`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 `district`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
-`address`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`mobile`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`postscript`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`address`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`mobile`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`postscript`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `shipping_fee`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
-`pay_name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`pay_name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `pay_id`  tinyint NOT NULL DEFAULT 0 ,
 `actual_price`  decimal(10,2) NOT NULL DEFAULT 0.00 COMMENT '瀹為檯闇€瑕佹敮浠樼殑閲戦' ,
 `integral`  int UNSIGNED NOT NULL DEFAULT 0 ,
@@ -740,7 +740,7 @@ CREATE TABLE `nideshop_order` (
 `coupon_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 COMMENT '浣跨敤鐨勪紭鎯犲埜id' ,
 `parent_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `coupon_price`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
-`callback_status`  enum('true','false') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT 'true' ,
+`callback_status`  enum('true','false') CHARACTER SET utf8mb4  NULL DEFAULT 'true' ,
 PRIMARY KEY (`id`),
 UNIQUE INDEX `order_sn` (`order_sn`) USING BTREE ,
 INDEX `user_id` (`user_id`) USING BTREE ,
@@ -769,10 +769,10 @@ CREATE TABLE `nideshop_order_express` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `order_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `shipper_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`shipper_name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '鐗╂祦鍏徃鍚嶇О' ,
-`shipper_code`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '鐗╂祦鍏徃浠ｇ爜' ,
-`logistic_code`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '蹇€掑崟鍙?' ,
-`traces`  varchar(2000) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '鐗╂祦璺熻釜淇℃伅' ,
+`shipper_name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '鐗╂祦鍏徃鍚嶇О' ,
+`shipper_code`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '鐗╂祦鍏徃浠ｇ爜' ,
+`logistic_code`  varchar(20) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '蹇€掑崟鍙?' ,
+`traces`  varchar(2000) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '鐗╂祦璺熻釜淇℃伅' ,
 `is_finish`  tinyint(1) NOT NULL DEFAULT 0 ,
 `request_count`  int NULL DEFAULT 0 COMMENT '鎬绘煡璇㈡鏁?' ,
 `request_time`  int NULL DEFAULT 0 COMMENT '鏈€杩戜竴娆″悜绗笁鏂规煡璇㈢墿娴佷俊鎭椂闂?' ,
@@ -802,16 +802,16 @@ CREATE TABLE `nideshop_order_goods` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `order_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `goods_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`goods_sn`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`goods_sn`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `product_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `number`  smallint UNSIGNED NOT NULL DEFAULT 1 ,
 `market_price`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
 `retail_price`  decimal(10,2) NOT NULL DEFAULT 0.00 ,
-`goods_specifition_name_value`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
+`goods_specifition_name_value`  text CHARACTER SET utf8mb4  NOT NULL ,
 `is_real`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_specifition_ids`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`list_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_specifition_ids`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`list_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`),
 INDEX `order_id` (`order_id`) USING BTREE ,
 INDEX `goods_id` (`goods_id`) USING BTREE 
@@ -835,8 +835,8 @@ DROP TABLE IF EXISTS `nideshop_product`;
 CREATE TABLE `nideshop_product` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `goods_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
-`goods_specification_ids`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`goods_sn`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`goods_specification_ids`  varchar(50) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`goods_sn`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `goods_number`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
 `retail_price`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 ,
 PRIMARY KEY (`id`)
@@ -863,7 +863,7 @@ DROP TABLE IF EXISTS `nideshop_region`;
 CREATE TABLE `nideshop_region` (
 `id`  smallint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `parent_id`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
-`name`  varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(120) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `type`  tinyint(1) NOT NULL DEFAULT 2 ,
 `agency_id`  smallint UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`),
@@ -952,10 +952,10 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_search_history`;
 CREATE TABLE `nideshop_search_history` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
-`keyword`  char(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`from`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '鎼滅储鏉ユ簮锛屽PC銆佸皬绋嬪簭銆丄PP绛?' ,
+`keyword`  char(50) CHARACTER SET utf8mb4  NOT NULL ,
+`from`  varchar(45) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '鎼滅储鏉ユ簮锛屽PC銆佸皬绋嬪簭銆丄PP绛?' ,
 `add_time`  int NOT NULL DEFAULT 0 COMMENT '鎼滅储鏃堕棿' ,
-`user_id`  varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL ,
+`user_id`  varchar(45) CHARACTER SET utf8mb4  NULL DEFAULT NULL ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -977,8 +977,8 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_shipper`;
 CREATE TABLE `nideshop_shipper` (
 `id`  int NOT NULL AUTO_INCREMENT ,
-`name`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '蹇€掑叕鍙稿悕绉?' ,
-`code`  varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' COMMENT '蹇€掑叕鍙镐唬鐮?' ,
+`name`  varchar(20) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '蹇€掑叕鍙稿悕绉?' ,
+`code`  varchar(10) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' COMMENT '蹇€掑叕鍙镐唬鐮?' ,
 `sort_order`  int NOT NULL DEFAULT 10 COMMENT '鎺掑簭' ,
 PRIMARY KEY (`id`),
 UNIQUE INDEX `nideshop_shipper_id_uindex` (`id`) USING BTREE 
@@ -1003,7 +1003,7 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_specification`;
 CREATE TABLE `nideshop_specification` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `sort_order`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 PRIMARY KEY (`id`)
 )
@@ -1027,15 +1027,15 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_topic`;
 CREATE TABLE `nideshop_topic` (
 `id`  int UNSIGNED NOT NULL AUTO_INCREMENT ,
-`title`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'\'' ,
-`content`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL ,
-`avatar`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`item_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`subtitle`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '\'' ,
+`title`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'\'' ,
+`content`  text CHARACTER SET utf8mb4  NULL ,
+`avatar`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`item_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`subtitle`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '\'' ,
 `topic_category_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `price_info`  decimal(10,2) UNSIGNED NOT NULL DEFAULT 0.00 ,
-`read_count`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '0' ,
-`scene_pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`read_count`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '0' ,
+`scene_pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `topic_template_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `topic_tag_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `sort_order`  int UNSIGNED NOT NULL DEFAULT 100 ,
@@ -1061,8 +1061,8 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_topic_category`;
 CREATE TABLE `nideshop_topic_category` (
 `id`  int NOT NULL AUTO_INCREMENT ,
-`title`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`pic_url`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`title`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`pic_url`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
@@ -1084,19 +1084,19 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_user`;
 CREATE TABLE `nideshop_user` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`username`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`password`  varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`username`  varchar(60) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`password`  varchar(32) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `gender`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
 `birthday`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `register_time`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `last_login_time`  int UNSIGNED NOT NULL DEFAULT 0 ,
-`last_login_ip`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`last_login_ip`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `user_level_id`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`nickname`  varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`mobile`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL ,
-`register_ip`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`avatar`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`weixin_openid`  varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`nickname`  varchar(60) CHARACTER SET utf8mb4  NOT NULL ,
+`mobile`  varchar(20) CHARACTER SET utf8mb4  NOT NULL ,
+`register_ip`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`avatar`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`weixin_openid`  varchar(50) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`),
 UNIQUE INDEX `user_name` (`username`) USING BTREE 
 )
@@ -1120,7 +1120,7 @@ DROP TABLE IF EXISTS `nideshop_user_coupon`;
 CREATE TABLE `nideshop_user_coupon` (
 `id`  mediumint UNSIGNED NOT NULL AUTO_INCREMENT ,
 `coupon_id`  tinyint UNSIGNED NOT NULL DEFAULT 0 ,
-`coupon_number`  varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`coupon_number`  varchar(20) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 `user_id`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `used_time`  int UNSIGNED NOT NULL DEFAULT 0 ,
 `order_id`  mediumint UNSIGNED NOT NULL DEFAULT 0 ,
@@ -1146,8 +1146,8 @@ COMMIT;
 DROP TABLE IF EXISTS `nideshop_user_level`;
 CREATE TABLE `nideshop_user_level` (
 `id`  tinyint UNSIGNED NOT NULL AUTO_INCREMENT ,
-`name`  varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
-`description`  varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '' ,
+`name`  varchar(30) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
+`description`  varchar(255) CHARACTER SET utf8mb4  NOT NULL DEFAULT '' ,
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
