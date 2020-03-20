@@ -1,4 +1,4 @@
-/*
+﻿/*
 Navicat MySQL Data Transfer
 
 Source Server         : local
@@ -34,7 +34,7 @@ INDEX `position_id` (`ad_position_id`) USING BTREE ,
 INDEX `enabled` (`enabled`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=4
 
 ;
@@ -59,7 +59,7 @@ CREATE TABLE `nideshop_ad_position` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=2
 
 ;
@@ -90,7 +90,7 @@ PRIMARY KEY (`id`),
 INDEX `user_id` (`user_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=12
 
 ;
@@ -120,7 +120,7 @@ CREATE TABLE `nideshop_admin` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=2
 
 ;
@@ -147,7 +147,7 @@ PRIMARY KEY (`id`),
 INDEX `cat_id` (`attribute_category_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=103
 
 ;
@@ -171,7 +171,7 @@ CREATE TABLE `nideshop_attribute_category` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 
 ;
 
@@ -203,7 +203,7 @@ PRIMARY KEY (`id`),
 INDEX `is_show` (`is_show`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=1046012
 
 ;
@@ -238,7 +238,7 @@ PRIMARY KEY (`id`),
 INDEX `session_id` (`session_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=104
 
 ;
@@ -274,7 +274,7 @@ PRIMARY KEY (`id`),
 INDEX `parent_id` (`parent_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=1036008
 
 ;
@@ -299,7 +299,7 @@ CREATE TABLE `nideshop_channel` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=6
 
 ;
@@ -328,7 +328,7 @@ INDEX `goods_id` (`value_id`) USING BTREE ,
 INDEX `is_attention` (`is_attention`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=55
 
 ;
@@ -391,7 +391,7 @@ CREATE TABLE `nideshop_comment_picture` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=1121
 
 ;
@@ -433,7 +433,7 @@ CREATE TABLE `nideshop_coupon` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=5
 
 ;
@@ -467,7 +467,7 @@ PRIMARY KEY (`msg_id`),
 INDEX `user_id` (`user_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=2
 
 ;
@@ -491,7 +491,7 @@ CREATE TABLE `nideshop_footprint` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=115
 
 ;
@@ -546,7 +546,7 @@ INDEX `goods_number` (`goods_number`) USING BTREE ,
 INDEX `sort_order` (`sort_order`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 
 ;
 
@@ -573,7 +573,7 @@ INDEX `goods_id` (`goods_id`) USING BTREE ,
 INDEX `attr_id` (`attribute_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=872
 
 ;
@@ -607,7 +607,7 @@ PRIMARY KEY (`id`),
 INDEX `goods_id` (`goods_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=681
 
 ;
@@ -637,7 +637,7 @@ CREATE TABLE `nideshop_goods_issue` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=5
 
 ;
@@ -664,7 +664,7 @@ INDEX `goods_id` (`goods_id`) USING BTREE ,
 INDEX `specification_id` (`specification_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 COMMENT='商品对应规格表值表'
 AUTO_INCREMENT=8
 
@@ -693,7 +693,7 @@ CREATE TABLE `nideshop_keywords` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 COMMENT='热闹关键词表'
 AUTO_INCREMENT=8
 
@@ -750,7 +750,7 @@ INDEX `pay_status` (`pay_status`) USING BTREE ,
 INDEX `pay_id` (`pay_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=15
 
 ;
@@ -782,7 +782,7 @@ PRIMARY KEY (`id`),
 INDEX `order_id` (`order_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 COMMENT='订单物流信息表，发货时生成'
 AUTO_INCREMENT=2
 
@@ -817,7 +817,7 @@ INDEX `order_id` (`order_id`) USING BTREE ,
 INDEX `goods_id` (`goods_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=24
 
 ;
@@ -842,7 +842,7 @@ CREATE TABLE `nideshop_product` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=245
 
 ;
@@ -872,7 +872,7 @@ INDEX `region_type` (`type`) USING BTREE ,
 INDEX `agency_id` (`agency_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=4044
 
 ;
@@ -935,7 +935,7 @@ CREATE TABLE `nideshop_related_goods` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=1
 
 ;
@@ -959,7 +959,7 @@ CREATE TABLE `nideshop_search_history` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=32
 
 ;
@@ -984,7 +984,7 @@ PRIMARY KEY (`id`),
 UNIQUE INDEX `nideshop_shipper_id_uindex` (`id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 COMMENT='快递公司'
 AUTO_INCREMENT=14
 
@@ -1008,7 +1008,7 @@ CREATE TABLE `nideshop_specification` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 COMMENT='规格表'
 AUTO_INCREMENT=22
 
@@ -1043,7 +1043,7 @@ CREATE TABLE `nideshop_topic` (
 INDEX `topic_id` (`id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=316
 
 ;
@@ -1066,7 +1066,7 @@ CREATE TABLE `nideshop_topic_category` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=6
 
 ;
@@ -1101,7 +1101,7 @@ PRIMARY KEY (`id`),
 UNIQUE INDEX `user_name` (`username`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=2
 
 ;
@@ -1128,7 +1128,7 @@ PRIMARY KEY (`id`),
 INDEX `user_id` (`user_id`) USING BTREE 
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=32
 
 ;
@@ -1151,7 +1151,7 @@ CREATE TABLE `nideshop_user_level` (
 PRIMARY KEY (`id`)
 )
 ENGINE=InnoDB
-DEFAULT CHARACTER SET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+DEFAULT CHARACTER SET=utf8mb4 
 AUTO_INCREMENT=4
 
 ;
