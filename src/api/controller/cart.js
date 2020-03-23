@@ -63,9 +63,9 @@ module.exports = class extends Base {
     if (think.isEmpty(productInfo) || productInfo.goods_number < number) {
       return this.fail(400, '库存不足');
     }
-
+    
     // 判断购物车中是否存在此规格商品
-    const cartInfo = await this.model('cart').where({goods_id: goodsId, product_id: productId}).find();
+    const cartInfo = await this.model('cart').where({goods_id: goodsId, product_id: productId, user_id: this.ctx.state.userId}).find();
     if (think.isEmpty(cartInfo)) {
       // 添加操作
 

@@ -1,5 +1,6 @@
 const Base = require('./base.js');
 const moment = require('moment');
+const fs = require('fs');
 
 module.exports = class extends Base {
   /**
@@ -7,7 +8,7 @@ module.exports = class extends Base {
    * @return {Promise} []
    */
   async listAction() {
-    const orderList = await this.model('order').where({ user_id: this.getLoginUserId() }).page(1, 10).countSelect();
+    const orderList = await this.model('order').where({ user_id: this.getLoginUserId() }).order(['id DESC']).page(1, 10).countSelect();
     const newOrderList = [];
     for (const item of orderList.data) {
       // 订单的商品
@@ -77,12 +78,12 @@ module.exports = class extends Base {
    */
   async submitAction() {
     // 获取收货地址信息和计算运费
-    const addressId = this.post('addressId');
-    const checkedAddress = await this.model('address').where({ id: addressId }).find();
-    if (think.isEmpty(checkedAddress)) {
-      return this.fail('请选择收货地址');
-    }
-    const freightPrice = 0.00;
+    // const addressId = this.post('addressId');
+    // const checkedAddress = await this.model('address').where({ id: addressId }).find();
+    // if (think.isEmpty(checkedAddress)) {
+    //   return this.fail('请选择收货地址');
+    // }
+    // const freightPrice = 0.00;
 
     // 获取要购买的商品
     const checkedGoodsList = await this.model('cart').where({ user_id: this.getLoginUserId(), session_id: 1, checked: 1 }).select();
@@ -91,21 +92,21 @@ module.exports = class extends Base {
     }
 
     // 统计商品总价
-    let goodsTotalPrice = 0.00;
-    for (const cartItem of checkedGoodsList) {
-      goodsTotalPrice += cartItem.number * cartItem.retail_price;
-    }
+    // let goodsTotalPrice = 0.00;
+    // for (const cartItem of checkedGoodsList) {
+    //   goodsTotalPrice += cartItem.number * cartItem.retail_price;
+    // }
 
-    // 获取订单使用的优惠券
-    const couponId = this.post('couponId');
-    const couponPrice = 0.00;
-    if (!think.isEmpty(couponId)) {
+    // // 获取订单使用的优惠券
+    // const couponId = this.post('couponId');
+    // const couponPrice = 0.00;
+    // if (!think.isEmpty(couponId)) {
 
-    }
+    // }
 
     // 订单价格计算
-    const orderTotalPrice = goodsTotalPrice + freightPrice - couponPrice; // 订单的总价
-    const actualPrice = orderTotalPrice - 0.00; // 减去其它支付的金额后，要实际支付的金额
+    // const orderTotalPrice = goodsTotalPrice + freightPrice - couponPrice; // 订单的总价
+    const actualPrice = 0.00; // 减去其它支付的金额后，要实际支付的金额
     const currentTime = parseInt(this.getTime() / 1000);
 
     const orderInfo = {
@@ -113,24 +114,26 @@ module.exports = class extends Base {
       user_id: this.getLoginUserId(),
 
       // 收货地址和运费
-      consignee: checkedAddress.name,
-      mobile: checkedAddress.mobile,
-      province: checkedAddress.province_id,
-      city: checkedAddress.city_id,
-      district: checkedAddress.district_id,
-      address: checkedAddress.address,
-      freight_price: 0.00,
+      // consignee: checkedAddress.name,
+      // mobile: checkedAddress.mobile,
+      // province: checkedAddress.province_id,
+      // city: checkedAddress.city_id,
+      // district: checkedAddress.district_id,
+      // address: checkedAddress.address,
+      // freight_price: 0.00,
 
       // 留言
       postscript: this.post('postscript'),
-
+      project_name: this.post('projectName'),
+      project_owner: this.post('projectOwner'),
+      project_date: this.post('projectDate'),
       // 使用的优惠券
-      coupon_id: 0,
-      coupon_price: couponPrice,
+      // coupon_id: 0,
+      // coupon_price: couponPrice,
 
       add_time: currentTime,
-      goods_price: goodsTotalPrice,
-      order_price: orderTotalPrice,
+      // goods_price: goodsTotalPrice,
+      // order_price: orderTotalPrice,
       actual_price: actualPrice
     };
 
@@ -176,5 +179,29 @@ module.exports = class extends Base {
     }
     const latestExpressInfo = await this.model('order_express').getLatestOrderExpress(orderId);
     return this.success(latestExpressInfo);
+  }
+
+  /**
+   *  上传图片
+   */
+  async uploadAction() {
+    think.logger.info('sssss');
+    think.logger.info(think.ROOT_PATH);
+    const themefile = this.file('themename');
+    const filepath = themefile.path; // 为防止上传的时候因文件名重复而覆盖同名已上传文件，path是MD5方式产生的随机名称
+    const uploadpath = think.ROOT_PATH + '/www/static/theme';
+    think.mkdir(uploadpath); // 创建该目录
+    // 提取出用 ‘/' 隔开的path的最后一部分。
+
+    // let basename = path.basename(filepath);
+    const basename = themefile.originalFilename; // 因为本系统不允许上传同名主题，所以文件名就直接使用主题名
+    // 将上传的文件（路径为filepath的文件）移动到第二个参数所在的路径，并改为第二个参数的文件名。
+    fs.renameSync(filepath, uploadpath + '/' + basename);
+    themefile.path = uploadpath + '/' + basename;
+
+    // 读取压缩文件信息存数据库
+    // const zip = new JSZip();
+
+    this.success(themefile);
   }
 };
