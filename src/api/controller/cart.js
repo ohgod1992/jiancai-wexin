@@ -95,7 +95,7 @@ module.exports = class extends Base {
         checked: 1
       };
 
-      await this.model('cart').thenAdd(cartData, {product_id: productId});
+      await this.model('cart').thenAdd(cartData, {product_id: productId,user_id:this.getLoginUserId()});
     } else {
       // 如果已经存在购物车中，则数量增加
       if (productInfo.goods_number < (number + cartInfo.number)) {
