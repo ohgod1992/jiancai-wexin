@@ -1,6 +1,5 @@
 const Base = require('./base.js');
 const moment = require('moment');
-const fs = require('fs');
 
 module.exports = class extends Base {
   /**
@@ -8,11 +7,15 @@ module.exports = class extends Base {
    * @return {Promise} []
    */
   async listAction() {
-    const orderList = await this.model('order').where({ user_id: this.getLoginUserId() }).order(['id DESC']).page(1, 10).countSelect();
+    const orderList = await this.model('order').where({
+      user_id: this.getLoginUserId()
+    }).order(['id DESC']).page(1, 10).countSelect();
     const newOrderList = [];
     for (const item of orderList.data) {
       // 订单的商品
-      item.goodsList = await this.model('order_goods').where({ order_id: item.id }).select();
+      item.goodsList = await this.model('order_goods').where({
+        order_id: item.id
+      }).select();
       item.goodsCount = 0;
       item.goodsList.forEach(v => {
         item.goodsCount += v.number;
@@ -33,21 +36,32 @@ module.exports = class extends Base {
 
   async detailAction() {
     const orderId = this.get('orderId');
-    const orderInfo = await this.model('order').where({ user_id: this.getLoginUserId(), id: orderId }).find();
+    const orderInfo = await this.model('order').where({
+      user_id: this.getLoginUserId(),
+      id: orderId
+    }).find();
 
     if (think.isEmpty(orderInfo)) {
       return this.fail('订单不存在');
     }
 
-    orderInfo.province_name = await this.model('region').where({ id: orderInfo.province }).getField('name', true);
-    orderInfo.city_name = await this.model('region').where({ id: orderInfo.city }).getField('name', true);
-    orderInfo.district_name = await this.model('region').where({ id: orderInfo.district }).getField('name', true);
+    orderInfo.province_name = await this.model('region').where({
+      id: orderInfo.province
+    }).getField('name', true);
+    orderInfo.city_name = await this.model('region').where({
+      id: orderInfo.city
+    }).getField('name', true);
+    orderInfo.district_name = await this.model('region').where({
+      id: orderInfo.district
+    }).getField('name', true);
     orderInfo.full_region = orderInfo.province_name + orderInfo.city_name + orderInfo.district_name;
 
     const latestExpressInfo = await this.model('order_express').getLatestOrderExpress(orderId);
     orderInfo.express = latestExpressInfo;
 
-    const orderGoods = await this.model('order_goods').where({ order_id: orderId }).select();
+    const orderGoods = await this.model('order_goods').where({
+      order_id: orderId
+    }).select();
 
     // 订单状态的处理
     orderInfo.order_status_text = await this.model('order').getOrderStatusText(orderId);
@@ -86,7 +100,11 @@ module.exports = class extends Base {
     // const freightPrice = 0.00;
 
     // 获取要购买的商品
-    const checkedGoodsList = await this.model('cart').where({ user_id: this.getLoginUserId(), session_id: 1, checked: 1 }).select();
+    const checkedGoodsList = await this.model('cart').where({
+      user_id: this.getLoginUserId(),
+      session_id: 1,
+      checked: 1
+    }).select();
     if (think.isEmpty(checkedGoodsList)) {
       return this.fail('请选择商品');
     }
@@ -165,7 +183,9 @@ module.exports = class extends Base {
     await this.model('order_goods').addMany(orderGoodsData);
     await this.model('cart').clearBuyGoods(this.getLoginUserId());
 
-    return this.success({ orderInfo: orderInfo });
+    return this.success({
+      orderInfo: orderInfo
+    });
   }
 
   /**
@@ -185,23 +205,35 @@ module.exports = class extends Base {
    *  上传图片
    */
   async uploadAction() {
-    think.logger.info('sssss');
-    think.logger.info(think.ROOT_PATH);
-    const themefile = this.file('themename');
-    const filepath = themefile.path; // 为防止上传的时候因文件名重复而覆盖同名已上传文件，path是MD5方式产生的随机名称
-    const uploadpath = think.ROOT_PATH + '/www/static/theme';
-    think.mkdir(uploadpath); // 创建该目录
-    // 提取出用 ‘/' 隔开的path的最后一部分。
-
-    // let basename = path.basename(filepath);
-    const basename = themefile.originalFilename; // 因为本系统不允许上传同名主题，所以文件名就直接使用主题名
-    // 将上传的文件（路径为filepath的文件）移动到第二个参数所在的路径，并改为第二个参数的文件名。
-    fs.renameSync(filepath, uploadpath + '/' + basename);
-    themefile.path = uploadpath + '/' + basename;
-
-    // 读取压缩文件信息存数据库
-    // const zip = new JSZip();
-
-    this.success(themefile);
+    // const app = think.app;
+    // // 读取图片目录
+    // app.use(express.static('public'));
+    // // 上传文件目录
+    // app.use('/upload', express.static('upload'));
+    // const form = new multiparty.Form();
+    // form.maxFieldsSize = 2 * 1024 * 1024;
+    // form.uploadDir = 'upload';
+    // form.parse(this.ctx.request, function (err, flields, files) {
+    //   // 拿到扩展名
+    //   const extname = path.extname(files.file[0].originalFilename);
+    //   //uuid生成 图片名称
+    //   const nameID = (uuid.v4()).replace(/\-/g, '');
+    //   const oldpath = path.normalize(files.file[0].path);
+    //   //新的路径
+    //   let newfilename = nameID + extname;
+    //   var newpath = './upload/' + newfilename;
+    //   //改名
+    //   fs.rename(oldpath, newpath, function (err) {
+    //     if (err) {
+    //       res.send({
+    //         msg: '文件上传失败:'
+    //       }).end();
+    //     } else {
+    //       res.send({
+    //         msg: '文件上传成功:'
+    //       }).end();
+    //     }
+    //   })
+    // })
   }
 };
